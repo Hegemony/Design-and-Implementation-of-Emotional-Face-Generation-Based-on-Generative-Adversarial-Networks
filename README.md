@@ -8,6 +8,11 @@
 #### Please refer to requirements.txt for specific installation package version.
 
 ## Datasets
+To download the CelebA dataset:
+[link：https://pan.baidu.com/s/1dubdGfdZqRPS34-pVD1rog ](https://pan.baidu.com/s/1dubdGfdZqRPS34-pVD1rog)
+Extraction code：1q2w 
+
+To download the RaFD dataset: you must request access to the dataset from [the Radboud Faces Database website](http://www.socsci.ru.nl:8180/RaFD2/RaFD?p=main). 
 
 ## Pretrained Models
 
