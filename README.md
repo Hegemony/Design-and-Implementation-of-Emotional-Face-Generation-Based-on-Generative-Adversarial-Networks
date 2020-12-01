@@ -3,7 +3,7 @@
 ## Dependencies
 - [Python3]
 - [PyTorch]
-- [Tensorflow]
+- [Tensorflow](optional for tensorboard)
 
 #### Please refer to requirements.txt for specific installation package version.
 
