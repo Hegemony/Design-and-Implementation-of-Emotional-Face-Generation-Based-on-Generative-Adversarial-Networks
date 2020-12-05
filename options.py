@@ -25,13 +25,13 @@ class Options(object):
         parser.add_argument('--visdom_display_id', type=int, default=1, help='set value larger than 0 to display with visdom.')
 
         parser.add_argument('--visdom_display_id1', type=int, default=2, help='set value larger than 0 to display with visdom.')
-        # 自定义visdom_id1,以便于画图
+
         
         parser.add_argument('--results', type=str, default="results", help='save test results to this path.')
-        parser.add_argument('--interpolate_len', type=int, default=5, help='interpolate length for test.')  # 线性变化的值
+        parser.add_argument('--interpolate_len', type=int, default=5, help='interpolate length for test.')  
         parser.add_argument('--no_test_eval', action='store_true', help='do not use eval mode during test time.')
         parser.add_argument('--save_test_gif', action='store_true', help='save gif images instead of the concatenation of static images.')
-        # 生成gif图片, action='store_true'，只要运行时该变量有传参就将该变量设为True。
+
 
         parser.add_argument('--data_root', required=True, help='paths to data set.')
         parser.add_argument('--imgs_dir', type=str, default="imgs", help='path to image')
@@ -39,11 +39,11 @@ class Options(object):
         parser.add_argument('--train_csv', type=str, default="train_ids.csv", help='train images paths')
         parser.add_argument('--test_csv', type=str, default="test_ids.csv", help='test images paths')
 
-        # parser.add_argument('--batch_size', type=int, default=25, help='input batch size.')  # 默认batch_size为25
-        parser.add_argument('--batch_size', type=int, default=5, help='input batch size.')  # 自己设置batch_size为5
+        # parser.add_argument('--batch_size', type=int, default=25, help='input batch size.')  
+        parser.add_argument('--batch_size', type=int, default=5, help='input batch size.')  
         parser.add_argument('--serial_batches', action='store_true', help='if specified, input images in order.')
         # parser.add_argument('--n_threads', type=int, default=6, help='number of workers to load data.')
-        # 源代码 pytorch函数torch.utils.data.DataLoader在windows下的特有错误，该函数里面有个参数num_workers表示进程个数，在windows下改为0就可以了
+
         parser.add_argument('--n_threads', type=int, default=0, help='number of workers to load data.')
         parser.add_argument('--max_dataset_size', type=int, default=float("inf"), help='maximum number of samples.')
 
@@ -76,23 +76,21 @@ class Options(object):
         parser.add_argument('--lr_decay_iters', type=int, default=50, help='multiply by a gamma every lr_decay_iters iterations')
 
         parser.add_argument('--epoch_count', type=int, default=1, help='the starting epoch count, we save the model by <epoch_count>, <epoch_count>+<save_latest_freq>, ...')
-        # parser.add_argument('--niter', type=int, default=20, help='# of iter at starting learning rate') # 默认值
-        # parser.add_argument('--niter_decay', type=int, default=10, help='# of iter to linearly decay learning rate to zero')  # 默认值
-        parser.add_argument('--niter', type=int, default=20, help='# of iter at starting learning rate')   # 自己设置的值
-        parser.add_argument('--niter_decay', type=int, default=10, help='# of iter to linearly decay learning rate to zero')  # 自己设置的值
+
+        parser.add_argument('--niter', type=int, default=20, help='# of iter at starting learning rate')  
+        parser.add_argument('--niter_decay', type=int, default=10, help='# of iter to linearly decay learning rate to zero')
         
         # loss options 
         parser.add_argument('--lambda_dis', type=float, default=1.0, help='discriminator weight in loss')
 
-        # parser.add_argument('--lambda_aus', type=float, default=160.0, help='AUs weight in loss')  # 源代码是4000/25=160
-        parser.add_argument('--lambda_aus', type=float, default=800.0, help='AUs weight in loss')   # 按照ganimation-master更改的默认值4000/5=800
+        # parser.add_argument('--lambda_aus', type=float, default=160.0, help='AUs weight in loss')  
+        parser.add_argument('--lambda_aus', type=float, default=800.0, help='AUs weight in loss')   
 
         parser.add_argument('--lambda_rec', type=float, default=10.0, help='reconstruct loss weight')
 
-        # parser.add_argument('--lambda_mask', type=float, default=0, help='mse loss weight')  # 源代码
-        # parser.add_argument('--lambda_tv', type=float, default=0, help='total variation loss weight')  # 源代码
-        parser.add_argument('--lambda_mask', type=float, default=0.1, help='mse loss weight')  # 按照ganimation-master更改的默认值0.1
-        parser.add_argument('--lambda_tv', type=float, default=1e-5, help='total variation loss weight')  # 按照ganimation-master更改的默认值1e-5
+
+        parser.add_argument('--lambda_mask', type=float, default=0.1, help='mse loss weight')  
+        parser.add_argument('--lambda_tv', type=float, default=1e-5, help='total variation loss weight') 
 
         parser.add_argument('--lambda_wgan_gp', type=float, default=10., help='wgan gradient penalty weight')
 
@@ -122,13 +120,13 @@ class Options(object):
 
         # if test, disable visdom, update results path
         if opt.mode == "test":
-            opt.visdom_display_id = 0  # 不进行画图
+            opt.visdom_display_id = 0 
             opt.results = os.path.join(opt.results, "%s_%s_%s" % (dataset_name, opt.model, opt.load_epoch))
-            # 产生保存结果的目录路径
+       
             if not os.path.exists(opt.results):
                 os.makedirs(opt.results)
 
-        # set gpu device  设置使用的gpu
+        # set gpu device  
         str_ids = opt.gpu_ids.split(',')
         opt.gpu_ids = []
         for str_id in str_ids:
@@ -138,8 +136,8 @@ class Options(object):
         if len(opt.gpu_ids) > 0:
             torch.cuda.set_device(opt.gpu_ids[0])
 
-        # set seed   设置随机种子
-        if opt.lucky_seed == 0:   # 默认值为0，使用当前时间作为默认值
+        # set seed   
+        if opt.lucky_seed == 0:   
             opt.lucky_seed = int(time.time())
         random.seed(a=opt.lucky_seed)
         np.random.seed(seed=opt.lucky_seed)
@@ -151,12 +149,12 @@ class Options(object):
             torch.cuda.manual_seed(opt.lucky_seed)
             torch.cuda.manual_seed_all(opt.lucky_seed)
             
-        # write command to file  记录每次执行程序的指令文件run_script.sh
+        # write command to file  
         script_dir = opt.ckpt_dir 
         with open(os.path.join(os.path.join(script_dir, "run_script.sh")), 'a+') as f:
             f.write("[%5s][%s]python %s\n" % (opt.mode, opt.name, ' '.join(sys.argv)))
 
-        # print and write options file  打印网络参数的文件，opt.txt，每次执行程序都打印一次记录在opt.txt文件
+        # print and write options file 
         msg = ''
         msg += '------------------- [%5s][%s]Options --------------------\n' % (opt.mode, opt.name)
         for k, v in sorted(vars(opt).items()):
