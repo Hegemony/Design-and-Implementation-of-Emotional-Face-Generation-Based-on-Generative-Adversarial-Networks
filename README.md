@@ -3,7 +3,7 @@
 ## Dependencies
 * [Python 3.7+](https://www.continuum.io/downloads)
 * [PyTorch 1.1.0+](http://pytorch.org)
-* [TensorFlow](https://tensorflow.google.cn/) (optional for tensorboard)
+* [TensorFlow 1.14.0+](https://tensorflow.google.cn/) (optional for tensorboard)
 
 #### Please refer to requirements.txt for specific installation package version.
 
