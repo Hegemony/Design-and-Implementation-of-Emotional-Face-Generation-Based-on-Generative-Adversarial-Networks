@@ -1,9 +1,9 @@
 # Design and Implementation of Emotional Face Generation Based on Generative Adversarial Networks
 
 ## Dependencies
-- [Python3]
-- [PyTorch]
-- [Tensorflow] (optional for tensorboard)
+* [Python 3.7+](https://www.continuum.io/downloads)
+* [PyTorch 1.1.0+](http://pytorch.org)
+* [TensorFlow](https://tensorflow.google.cn/) (optional for tensorboard)
 
 #### Please refer to requirements.txt for specific installation package version.
 
