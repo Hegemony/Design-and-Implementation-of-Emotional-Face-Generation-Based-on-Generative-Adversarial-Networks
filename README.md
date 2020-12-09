@@ -14,6 +14,9 @@ Extraction code:1q2w.
 
 - To download the RaFD dataset: you must request access to the dataset from [the Radboud Faces Database website](http://www.socsci.ru.nl:8180/RaFD2/RaFD?p=main). 
 
+## Use Own Datasets
+- Obtain AUs Vector: Use [OpenFace](https://github.com/TadasBaltrusaitis/OpenFace) to extract Action Units vectors from the above cropped face. Specifically, only the AUs intensity is used in this project, namely AU01_r, AU02_r, AU04_r, AU05_r, AU06_r, AU07_r, AU09_r, AU10_r, AU12_r, AU14_r, AU15_r, AU17_r, AU20_r, AU23_r, AU25_r, AU26_r, AU45_r.
+
 ## Pretrained Models
 
 You can use this link: [https://pan.baidu.com/s/1EK9xRbzPmZwBXTlEvh6-pA](https://pan.baidu.com/s/1EK9xRbzPmZwBXTlEvh6-pA) to download pretrained models.
